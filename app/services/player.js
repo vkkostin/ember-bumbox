@@ -27,6 +27,10 @@ export default Ember.Service.extend({
     this.get('audioElement').pause();
   },
 
+  resume: function() {
+    this.get('audioElement').play();
+  },
+
   didStartPlaying: function() {
     this.set('isPlaying', true);
   },
