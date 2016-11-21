@@ -1,7 +1,7 @@
 <div class="album-list">
   {{#each model as |album|}}
     <div class="album">
-      {{#link-to 'album' album.id}}
+      {{#link-to 'album' album}}
         <img src={{album.artwork}}>
       {{/link-to}}
       <p class="album-name">{{album.name}}</p>

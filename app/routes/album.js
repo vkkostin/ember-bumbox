@@ -1,8 +1,7 @@
 import Ember from 'ember';
-import albums from 'bumbox/models/album-fixtures';
 
 export default Ember.Route.extend({
-  model(param) {
-    return albums.findBy('id', param.album_id);
+  model(params) {
+    return this.get('store').find('album', params.album_id);
   }
 });
