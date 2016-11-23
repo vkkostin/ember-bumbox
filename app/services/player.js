@@ -5,7 +5,7 @@ export default Ember.Service.extend({
     console.log("Play");
   },
   pause() {
-    console.log("Pause")
+    console.log("Pause");
   }
 
 });
