@@ -1,18 +1,24 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  tagName: 'tr',
+  classNameBindings: ['isCurrentSong:is-current-song'],
+
   player: Ember.inject.service(),
 
-  tagName: 'tr',
-  isPlaying: false,
+  isCurrentSong: Ember.computed('player.song', 'song', function() {
+    return this.get('player.song') === this.get('song');
+  }),
+
+  isPlaying: Ember.computed('player.isPlaying', 'isCurrentSong', function() {
+    return this.get('isCurrentSong') && this.get('player.isPlaying');
+  }),
 
   actions: {
     play() {
-      this.set('isPlaying', true);
-      this.get('player').play();
+      this.get('player').play(this.get('song'));
     },
     pause() {
-      this.set('isPlaying', false);
       this.get('player').pause();
     }
   }
