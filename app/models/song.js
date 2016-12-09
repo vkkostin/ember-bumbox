@@ -5,5 +5,8 @@ export default DS.Model.extend({
   name: DS.attr('string'),
   duration: DS.attr('number'),
   url: DS.attr('string'),
-  album: DS.belongsTo('album')
+  album: DS.belongsTo('album'),
+
+  artwork: Ember.computed.alias('album.artwork'),
+  artist: Ember.computed.alias('album.artist')
 });

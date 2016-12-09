@@ -1,13 +1,13 @@
-{{#if isPlaying}}
-  <img class="now-playing-artwork" src={{song.album.artwork}}>
+{{#if player.song}}
+  <img class="now-playing-artwork" src={{song.artwork}}>
   <div class="now-playing-body">
     <p class="now-playing-details">
       <span class="now-playing-name">{{song.name}}</span> -
-      <span class="now-playing-artist">{{song.album.artist}}</span>
+      <span class="now-playing-artist">{{song.artist}}</span>
     </p>
     <div class="now-playing-player">
       <p class="duration">
-        {{format-duration player.currentTime}}
+        {{format-duration currentTime}}
       </p>
     </div>
   </div>

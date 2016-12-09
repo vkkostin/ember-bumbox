@@ -10,8 +10,7 @@ export default Ember.Component.extend({
     return this.get('player.isPlaying');
   }),
 
-  song: Ember.computed('player.song', function() {
-    return this.get('player.song');
-  })
+  song: Ember.computed.readOnly('player.song'),
+  currentTime: Ember.computed.readOnly('player.currentTime')
 
 });
