@@ -4,10 +4,12 @@ export default Ember.Service.extend({
   isPlaying: false,
   audioElement: null,
   song: null,
+  currentTime: 0,
 
   setupAudioElement: function() {
     var el = document.createElement('audio');
     el.addEventListener('play', Ember.run.bind(this, 'didStartPlaying'));
+    el.addEventListener('timeupdate', Ember.run.bind(this, 'timeUpdate'));
     el.addEventListener('pause', Ember.run.bind(this, 'didPause'));
     this.set('audioElement', el);
   }.on('init'),
@@ -24,6 +26,10 @@ export default Ember.Service.extend({
 
   didStartPlaying: function() {
     this.set('isPlaying', true);
+  },
+
+  timeUpdate: function() {
+    this.set('currentTime', Math.floor(this.get('audioElement').currentTime));
   },
 
   didPause: function() {
